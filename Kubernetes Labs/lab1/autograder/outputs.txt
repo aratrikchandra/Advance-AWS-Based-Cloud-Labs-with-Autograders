@@ -1,0 +1,16 @@
+******* checking self healing **********
+
+PS C:\Users\aratrik\Desktop\MTP\lab1\autograder> kubectl get pods -n flask-app-namespace
+NAME                                    READY   STATUS    RESTARTS   AGE
+flask-app-deployment-6697b56df9-8c7ld   1/1     Running   0          96s
+flask-app-deployment-6697b56df9-qmzl5   1/1     Running   0          96s
+flask-app-deployment-6697b56df9-vz299   1/1     Running   0          96s
+PS C:\Users\aratrik\Desktop\MTP\lab1\autograder> python .\evaluate.py
+Deleted pod flask-app-deployment-6697b56df9-8c7ld
+Pod flask-app-deployment-6697b56df9-8c7ld is not present anymore.
+A new pod has been created as part of the self-healing feature.
+PS C:\Users\aratrik\Desktop\MTP\lab1\autograder> kubectl get pods -n flask-app-namespace
+NAME                                    READY   STATUS    RESTARTS   AGE
+flask-app-deployment-6697b56df9-d27t9   1/1     Running   0          92s
+flask-app-deployment-6697b56df9-qmzl5   1/1     Running   0          3m30s
+flask-app-deployment-6697b56df9-vz299   1/1     Running   0          3m30s
