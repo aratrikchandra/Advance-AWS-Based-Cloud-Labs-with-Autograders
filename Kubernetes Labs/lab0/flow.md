@@ -1,3 +1,4 @@
+```mermaid
 graph TD
     A[Start] --> B[Load public IP from data.json]
     B --> C[Load the SSH key]
@@ -8,3 +9,4 @@ graph TD
     F -->|Failure| E
     G --> H[End]
     E --> H
+```
